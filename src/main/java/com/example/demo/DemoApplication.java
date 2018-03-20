@@ -17,26 +17,15 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 	
-	
 	 /*
      * SqlSessionFactory ¼³Á¤ 
      */
-
 	   @Bean
 	    public SqlSessionFactory sqlSessionFactory(DataSource dataSource)throws Exception{
 	        SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 	            sessionFactory.setDataSource(dataSource);
-	            
 	            Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:*Mapper.xml");
-	            
 	            sessionFactory.setMapperLocations(res);
-	            
 	            return sessionFactory.getObject();
 	    }
-
-
-	
-
-
-
 }

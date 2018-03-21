@@ -22,8 +22,8 @@
         <tr>
             <th>id</th>
             <th>passwd</th>
-            <th>삭 제</th>
-            <th>수 정</th>
+            <th></th>
+            <th></th>
             
         </tr>
         <c:forEach var="user" items="${list}">
@@ -31,7 +31,7 @@
             <td>${user.id}</td>
              <td>${user.passwd}</td>
              <td> <button class="btn btn-primary"  onclick="location.href='/userDelete?id=${user.id}'">삭제</button> </td>
-        	 <td> <button class="btn btn-primary"  onclick="location.href='/userUpdate?id=${user.id}'">수정</button> </td>
+        	 <td> <button class="btn btn-primary"  onclick="location.href='/userUpdate?id=${user.id}'">비밀번호 변경</button> </td>
         </tr>
         </c:forEach>
     </table>

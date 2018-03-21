@@ -19,8 +19,8 @@ public class UserController {
     private UserMapper userMapper;
     
     @RequestMapping("/")
-    public String  hello() throws Exception {
-    	return "Hello World";
+    public ModelAndView  hello() throws Exception {
+    	return userList();
     }
     
     @RequestMapping("/test")
@@ -53,7 +53,6 @@ public class UserController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-    	// ������ �� ������ �� ������ �ڵ�
     	return userList();
     }
     
@@ -66,17 +65,13 @@ public class UserController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-    	// ������ �� ������ �� ������ �ڵ�
+    	// 에러 핸들링 예정
     	return userList();
-    	
     }
     
     //유저 수정
-    
     @RequestMapping(value="/userUpdate",method=RequestMethod.GET)
     public ModelAndView updateForm(String id) throws Exception{
-    	System.out.println(id);
-        
         return new ModelAndView("userUpdate","id",id);
     }
 
@@ -87,13 +82,12 @@ public class UserController {
 //    		HashMap<String, Object> map = new HashMap<>();
 //    		map.put("abcaa", "ddeeed");
 //    		return map;	
-    		System.out.println(user.getId()+"asdasdasd");
+    		System.out.println(user.getId()+"업데이트 예정");
     		userMapper.userUpdate(user);
 		} catch (Exception e) {
 			System.out.println("error");
 			// TODO: handle exception
 		}
-    	// ������ �� ������ �� ������ �ڵ�
     	return userList();
     }
     

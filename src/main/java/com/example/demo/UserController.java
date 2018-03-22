@@ -22,7 +22,7 @@ public class UserController {
     public ModelAndView  hello() throws Exception {
     	return userList();
     }
-    
+ 
     @RequestMapping("/test")
     public ModelAndView  test() throws Exception {
     	return new ModelAndView("test", "test","test");
@@ -43,17 +43,19 @@ public class UserController {
     }
 
     @RequestMapping(path = "/userCreate",method=RequestMethod.POST)
-    public ModelAndView userCreate(UserDTO user) throws Exception {
+    public int userCreate(UserDTO user) throws Exception {
     	try {
     		//에러 핸들링 전용
 //    		HashMap<String, Object> map = new HashMap<>();
 //    		map.put("abcaa", "ddeeed");
 //    		return map;	
-    		userMapper.userCreate(user);
+    		System.out.println(user.getId());
+    		return userMapper.userCreate(user);
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println("에러");
 		}
-    	return userList();
+    	return 0 ;
     }
     
     //유저 삭제
@@ -74,7 +76,7 @@ public class UserController {
     public ModelAndView updateForm(String id) throws Exception{
         return new ModelAndView("userUpdate","id",id);
     }
-
+    
     @RequestMapping(path = "/userUpdate",method=RequestMethod.POST)
     public ModelAndView userUpdate(UserDTO user) throws Exception {
     	try {
